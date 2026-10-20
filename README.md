@@ -6,6 +6,7 @@
 
 **Turn messy, sensitive bug artifacts into consistent fictional test fixtures — without quietly breaking the relationships that made the bug happen.**
 
+[![MCPize](https://mcpize.com/badge/@itsbryanman/ghostcase)](https://mcpize.com/mcp/ghostcase)
 [![Node.js](https://img.shields.io/badge/Node.js-22%2B-339933?logo=nodedotjs&logoColor=white)](https://nodejs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![MCP](https://img.shields.io/badge/MCP-Streamable_HTTP-8A2BE2)](https://modelcontextprotocol.io/)
