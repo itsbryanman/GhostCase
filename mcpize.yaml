@@ -11,3 +11,4 @@ build:
 startCommand:
   type: http
   command: node dist/src/server.js
+mcpPath: /mcp
