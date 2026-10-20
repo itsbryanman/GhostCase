@@ -1,0 +1,35 @@
+# Separate stack for the verified Backwoods Traefik deployment. It deliberately creates no host port.
+services:
+  ghostcase:
+    build: .
+    restart: unless-stopped
+    environment:
+      PORT: "8787"
+      GHOSTCASE_BASE_PATH: /ghostcase
+      GHOSTCASE_DATA_DIR: /data
+      GHOSTCASE_TOKENS: ${GHOSTCASE_TOKENS:?set account:token values in .env}
+      GHOSTCASE_ORIGIN: https://mcpserver.backwoodsdevelopment.com
+    volumes:
+      - ghostcase-data:/data
+    networks:
+      - web
+    security_opt: [no-new-privileges:true]
+    read_only: true
+    tmpfs: [/tmp]
+    deploy:
+      resources:
+        limits: { cpus: "0.50", memory: 256M }
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.ghostcase.rule=Host(`mcpserver.backwoodsdevelopment.com`) && PathPrefix(`/ghostcase`)
+      - traefik.http.routers.ghostcase.entrypoints=websecure
+      - traefik.http.routers.ghostcase.tls.certresolver=letsencrypt
+      - traefik.http.services.ghostcase.loadbalancer.server.port=8787
+      # Prefix is preserved: the application itself listens at /ghostcase/mcp.
+      - traefik.http.middlewares.ghostcase-limit.buffering.maxRequestBodyBytes=11534336
+      - traefik.http.routers.ghostcase.middlewares=ghostcase-limit
+volumes:
+  ghostcase-data:
+networks:
+  web:
+    external: true

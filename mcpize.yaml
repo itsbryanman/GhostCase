@@ -1,0 +1,13 @@
+# Prepared only; do not deploy this private-data service through MCPize until it documents
+# authenticated identity propagation to the origin and an enforceable origin-access boundary.
+version: 1
+name: ghostcase
+description: Transform explicitly selected bug fixtures locally, then share transformed test fixtures.
+runtime: typescript
+entry: src/server.ts
+build:
+  install: npm ci
+  command: npm run build
+startCommand:
+  type: http
+  command: node dist/src/server.js

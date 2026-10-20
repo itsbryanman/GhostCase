@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "csv": { "accounts.csv": { "delimiter": ",", "header": true } },
+  "rules": [
+    { "id": "json-account", "kind": "json", "selector": "/events/*/accountId", "action": "fictional_id", "entity": "account" },
+    { "id": "csv-account", "kind": "csv", "selector": "account_id", "action": "fictional_id", "entity": "account" },
+    { "id": "log-account", "kind": "regex", "selector": "account=(?<value>[A-Za-z0-9_-]+)", "action": "fictional_id", "entity": "account" },
+    { "id": "email", "kind": "json", "selector": "/events/*/email", "action": "fictional_email" },
+    { "id": "secret", "kind": "json", "selector": "/events/*/token", "action": "remove" }
+  ]
+}

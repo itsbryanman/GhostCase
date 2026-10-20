@@ -1,0 +1,9 @@
+{
+  "executable": "node",
+  "args": ["/4sale/ghostcase/examples/reproduce-demo.mjs"],
+  "cwd": "/4sale/ghostcase",
+  "original": "examples",
+  "transformed": "/tmp/ghost-preview",
+  "timeoutMs": 5000,
+  "predicate": { "assertionSignature": "NORMALIZATION_BUG" }
+}
