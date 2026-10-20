@@ -1,13 +1,17 @@
-# Prepared only; do not deploy this private-data service through MCPize until it documents
-# authenticated identity propagation to the origin and an enforceable origin-access boundary.
+# MCPize Configuration
+# Docs: https://mcpize.com/docs/mcpize-yaml
+
 version: 1
-name: ghostcase
-description: Transform explicitly selected bug fixtures locally, then share transformed test fixtures.
+
+name: "ghostcase"
+slug: "ghostcase"
+
 runtime: typescript
-entry: src/server.ts
+
 build:
-  install: npm ci
-  command: npm run build
-startCommand:
+  install: "npm ci"
+  command: "npm run build"
+
+start:
   type: http
-  command: node dist/src/server.js
+  command: "node dist/src/server.js"
